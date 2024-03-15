@@ -1,0 +1,82 @@
+body {
+    background-color: rgb(39, 39, 39);
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 200px 300px 300px 300px;
+}
+.nav {
+    width: 60%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    color: white;
+    grid-column: 1/5;
+    grid-row: 1;
+}
+.selection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.strat {
+    width: 60%;
+    background-color: grey;
+    margin-bottom: 25px;
+    padding: 18px;
+    font-size: 30px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: bold;
+}
+.strat:hover {
+    background-color: rgb(167, 167, 167);
+}
+.game {
+    background-color: gray;
+    font-size: 40px;
+    width: 65%;
+    height: 330px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    grid-column: 2/4;
+    grid-row: 2/4;
+}
+.icons {
+    background-color: grey;
+    width: 50%;
+    height: 200px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 2/4;
+    grid-row: 4;
+    border-radius: 20px;
+}
+.strat-display {
+    background-color: grey;
+    grid-column: 2/4;
+    grid-row: 4;
+    width: 50%;
+    height: 200px;
+    margin: auto;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+}
+.arrowIcons {
+    font-size: 90px;
+    background-color: grey;
+    padding: 20px;
+}
