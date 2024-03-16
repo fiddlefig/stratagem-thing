@@ -44,7 +44,7 @@ body {
      background-color: rgb(167, 167, 167);
 }
 
-.game {
+.game input {
      background-color: gray;
      font-size: 40px;
      width: 65%;

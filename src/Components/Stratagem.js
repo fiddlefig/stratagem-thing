@@ -1,35 +1,34 @@
 import React, { useState } from "react";
 import "./stratagem.css"
 
+const stratagems = [
+     {
+          id: 1,
+          name: "REINFORCE",
+          sequence: ['W', 'S', 'D', 'A', 'W'],
+     },
+     {
+          id: 2,
+          name: "RESUPPLY",
+          sequence: ['S', 'S', 'W', 'D'],
+     },
+     // add more
+]
+
 const Stratagem = () => {
-     const [stratIndex, setStratIndex] = useState(0);
-     const [inputSequence, setInputSequence] = useState("")
-     const [message, setMessage] = useState("")
+     const [currentStratagemIndex, setCurrentStratagemIndex] = useState(0)
+     const [inputValue, setInputValue] = useState("")
 
-     const stratgems = [
-          {
-               sequence: "wsdaw",
-               name: "Reinforce",
-               arrows: "🡅 🡇 🡆 🡄 🡅"
-          },
-     ]
+     const currentStratagem = stratagems[currentStratagemIndex]
 
-     const handleInputChange = (event) => {
-          setInputSequence(event.target.value);
-     }
-
-     const checkSequence = () => {
-          if (inputSequence === stratgems[stratIndex].sequence) {
-               if (stratIndex === stratgems.length - 1) {
-                    setMessage("Correct!")
-                    setStratIndex(0)
-               } else {
-                    setStratIndex(stratIndex + 1)
-                    setInputSequence("")
-                    setMessage("")
-               }
-          } else {
-               setMessage("Try again!")
+     const handleInputChange = (e) => {
+          setInputValue(e.target.value.toUpperCase())
+          
+          if (e.target.value.toUpperCase() === currentStratagem.sequence.join('')) {
+               setTimeout(() => {
+                    setInputValue('')
+                    setCurrentStratagemIndex(currentStratagemIndex + 1)
+               }, 1000)
           }
      }
 
@@ -40,20 +39,24 @@ const Stratagem = () => {
                </div>
 
                <div className="selection">
-                    <span className="strat" id="btn1">Reinforce | <span id="s1">&#129093; &#129095; &#129094; &#129092; &#129093;</span> </span>
-                    <span class="strat" id="btn2">Test | <span id="s2">&#129093;</span></span>
-                    <span class="strat">This is a strat</span>
+                    {stratagems.map(stratagem => (
+                         <div key={stratagem.id} className={currentStratagem.id === stratagem.id ?  'active' : ''}>
+                              {stratagem.name}
+                         </div>
+                    ))}
                </div>
 
                <div class="game" id="gameArea">
-                    <p>{stratgems[stratIndex].sequence}</p>
-                    <input type="text" value={inputSequence} onChange={handleInputChange} />
-                    <button onClick={checkSequence}>Check</button>
-                    <p>{message}</p>
+                    <div className="input-card">
+                         <input type="text" value={inputValue} onChange={handleInputChange} />
+                         {inputValue !== currentStratagem.sequence.join('') && inputValue.length > 0 &&  (
+                              <div className="try-again">Try again soldier</div>
+                         )}
+                    </div>
                </div>
 
                <div class="strat-display" id="strat-display">
-                    <span>{stratgems.sequence}</span>
+                    {currentStratagem.name}
                </div>
           </div>
      )
